@@ -215,7 +215,7 @@ function App() {
     <div className="app-container">
       {/* Title */}
       <div className="header" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-        <h1 style={{ margin: 0 }}>Khai Htoo Lay Video Chat</h1>
+        <h1 style={{ margin: 0 }}>Khai Htoo Lay VC</h1>
         {isInstallable && (
           <button 
             onClick={handleInstallClick}

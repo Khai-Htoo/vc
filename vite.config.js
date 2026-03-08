@@ -13,8 +13,8 @@ export default defineConfig({
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: 'ViteCall P2P',
-        short_name: 'ViteCall',
+        name: 'Khai Htoo Lay VC',
+        short_name: 'KHLVC',
         description: 'A simple P2P video and voice calling app',
         theme_color: '#ffffff',
         icons: [
