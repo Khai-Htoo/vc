@@ -45,7 +45,7 @@ function App() {
       if ('Notification' in window && Notification.permission === 'granted') {
         new Notification('Incoming Call', {
           body: `Incoming call from ${call.peer}`,
-          icon: '/pwa-icon.svg',
+          icon: '/pwa-icon.png',
           requireInteraction: true // Keeps the notification on screen until interacted with
         });
       }
