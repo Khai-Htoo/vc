@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Peer from 'peerjs';
-import { Phone, Copy, CheckCircle2, Video, Check, Download } from 'lucide-react';
+import { Phone, Copy, CheckCircle2, Video, Check, Download, ClipboardPaste } from 'lucide-react';
 import './App.css';
 import IncomingCall from './components/IncomingCall';
 import CallScreen from './components/CallScreen';
@@ -259,13 +259,43 @@ function App() {
 
       {/* Main Dialing Area */}
       <div className="dial-pad glass-panel">
-        <div className="input-group">
+        <div className="input-group" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
           <input 
             type="text" 
             placeholder="Enter friend's Peer ID" 
             value={remotePeerIdValue}
             onChange={(e) => setRemotePeerIdValue(e.target.value)}
+            style={{ paddingRight: '3.5rem', width: '100%', boxSizing: 'border-box' }}
           />
+          <button
+            onClick={async () => {
+              try {
+                const text = await navigator.clipboard.readText();
+                if (text) setRemotePeerIdValue(text);
+              } catch (err) {
+                console.error('Failed to read clipboard text: ', err);
+              }
+            }}
+            style={{
+              position: 'absolute',
+              right: '10px',
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.6)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '8px',
+              borderRadius: '12px',
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.color = 'white'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)'; e.currentTarget.style.background = 'transparent'; }}
+            title="Paste ID"
+          >
+            <ClipboardPaste size={22} />
+          </button>
         </div>
         
         {errorMsg && <div className="error-message">{errorMsg}</div>}
